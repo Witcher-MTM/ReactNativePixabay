@@ -1,12 +1,26 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from "react";
+import { createStackNavigator, TransitionPresets  } from "@react-navigation/stack";
+import { NavigationContainer} from "@react-navigation/native";
 
+import { Architecture } from "./pages/Architecture";
+import { Motorcicle } from "./pages/Motorcicle";
+import { Nature } from "./pages/Nature";
+import { Space } from "./pages/Space";
+import { Main } from "./pages/Main";
+import { StyleSheet } from 'react-native';
+
+const Stack = createStackNavigator();
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+          <Stack.Navigator screenOptions={{headerShown: false}}>
+            <Stack.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Main' component={Main}/>
+            <Stack.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Architecture' component={Architecture}/>
+            <Stack.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Motorcicle' component={Motorcicle}/>
+            <Stack.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Nature' component={Nature}/>
+            <Stack.Screen options={{ ...TransitionPresets.ModalSlideFromBottomIOS}} name='Space' component={Space}/>
+          </Stack.Navigator>
+  </NavigationContainer>
   );
 }
 
